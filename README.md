@@ -13,7 +13,8 @@ Using `ONVAULT` before any command that requires our private keys, such as
 
     RUN ONVAULT npm install --unsafe-perm
 
-The `ONVAULT` script automatically removes files under `~/.ssh` when it is done running the given command
+The `ONVAULT` script automatically loads to private key from the environment and removes the configuration after the given command is finished
+
 <br />
 ## Configuration
 
