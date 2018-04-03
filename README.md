@@ -13,12 +13,12 @@ Using `ONVAULT` before any command that requires our private keys, such as
 
     RUN ONVAULT npm install --unsafe-perm
 
-The `ONVAULT` script automatically loads to private key from the environment and removes the configuration after the given command is finished
+The `ONVAULT` script automatically loads to private key from the variables and removes the configuration after the given command is finished
 
 <br />
 ## Configuration
 
-### Environment variables
+### Variables
 
 * `SSH_PRIVATE_KEY`
 * `SSH_KNOWN_HOSTS`
