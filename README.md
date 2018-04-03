@@ -22,3 +22,14 @@ The `ONVAULT` script automatically loads to private key from the environment and
 
 * `SSH_PRIVATE_KEY`
 * `SSH_KNOWN_HOSTS`
+
+
+## Usage
+
+### On Alpine Linux
+
+    # installs ONVAULT utility
+    # https://github.com/do87/onvault
+    RUN apk add -Uuv bash curl && \
+        curl -L https://raw.githubusercontent.com/do87/onvault/master/ONVAULT > /usr/local/bin/ONVAULT && \
+        chmod +x /usr/local/bin/ONVAULT
