@@ -48,6 +48,10 @@ if [[ "$DISABLE_PASSWORD" != "" ]]; then
   ssh-keygen -p -P $DISABLE_PASSWORD -N "" -f ~/.ssh/id_rsa
 fi
 
+if [[ "$ADD_HOST" != "" ]]; then
+  ssh-keygen -R $ADD_HOST
+fi
+
 log "Executing command: $@"
 eval $@
 
