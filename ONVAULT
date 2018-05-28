@@ -3,7 +3,8 @@
 # signals bash to stop execution on any fail
 set -e
 
-: ${ONVAULT_START_AGENT:=true}
+: ${ONVAULT_START_AGENT:="true"}
+: ${ONVAULT_DEBUG:=""}
 
 while [[ "$#" > 1 ]]; do case $1 in
     --add-host) ADD_HOST="$2";;
