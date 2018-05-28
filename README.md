@@ -35,5 +35,5 @@ use `--add-host [hostname]` after `ONVAULT` and before your command.
     # installs ONVAULT utility
     # https://github.com/do87/onvault
     RUN apk add -Uuv bash curl && \
-        curl -L https://raw.githubusercontent.com/do87/onvault/master/ONVAULT > /usr/local/bin/ONVAULT && \
+        curl -L https://raw.githubusercontent.com/do87/onvault/v1.10.7/ONVAULT > /usr/local/bin/ONVAULT && \
         chmod +x /usr/local/bin/ONVAULT
