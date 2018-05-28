@@ -3,9 +3,6 @@
 # signals bash to stop execution on any fail
 set -e
 
-: ${ONVAULT_START_AGENT:="true"}
-: ${ONVAULT_DEBUG:="true"}
-
 while [[ "$#" > 1 ]]; do case $1 in
     --add-host) ADD_HOST="$2";;
     *) break;;
@@ -38,19 +35,20 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 600 ~/.ssh/* || true
 
+ONVAULT_START_AGENT=${ONVAULT_START_AGENT:-"true"}
 if [[ "$ONVAULT_START_AGENT" != "" ]]; then
     log "Starting SSH agent"
     eval `ssh-agent -s`
     ssh-add ~/.ssh/id_rsa
 fi
 
-if [[ "$ONVAULT_DEBUG" != "" ]]; then
-    log "Debug mode ON"
-    set +x
-    ls -la ~/.ssh
-    cat ~/.ssh/id_rsa
-    ssh-add -L
-fi
+
+log "Debug mode ON"
+set +x
+ls -la ~/.ssh
+cat ~/.ssh/id_rsa
+ssh-add -L
+
 
 if [[ "$DISABLE_PASSWORD" != "" ]]; then
   ssh-keygen -p -P $DISABLE_PASSWORD -N "" -f ~/.ssh/id_rsa
