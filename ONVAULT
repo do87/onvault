@@ -9,6 +9,12 @@ log () {
   echo -e "${GREEN}[ONVALUT]${NC} $@"
 }
 
+while [[ "$#" > 1 ]]; do case $1 in
+    --add-host) ADD_HOST="$2";;
+    *) break;;
+  esac; shift; shift
+done
+
 mkdir -p ~/.ssh/
 
 # check if is required the ssh backup
