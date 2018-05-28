@@ -16,11 +16,16 @@ Using `ONVAULT` before any command that requires our private keys, such as
 The `ONVAULT` script automatically loads to private key from the variables and removes the configuration after the given command is finished
 
 <br />
+
 ## Configuration
 
 ### Variables
 
 * `SSH_PRIVATE_KEY`
+
+### Adding a host to known hosts
+
+use `--add-host [hostname]` after `ONVAULT` and before your command.
 
 
 ## Usage
