@@ -38,13 +38,6 @@ chown -f `whoami` ~/.ssh/* || true
 chmod -f 700 ~/.ssh/* || true
 chmod -f 600 ~/.ssh/id_rsa || true
 
-if [[ "$ONVAULT_DEBUG" != "" ]]; then
-    log "Debug mode ON"
-    set +x
-    ls -la ~/.ssh
-    cat ~/.ssh/id_rsa
-fi
-
 if [[ "$DISABLE_PASSWORD" != "" ]]; then
   ssh-keygen -p -P $DISABLE_PASSWORD -N "" -f ~/.ssh/id_rsa
 fi
@@ -52,6 +45,13 @@ fi
 if [[ "$ONVAULT_ADD_HOST" != "" ]]; then
   log "Adding host $ONVAULT_ADD_HOST"
   ssh-keygen -R $ONVAULT_ADD_HOST
+fi
+
+if [[ "$ONVAULT_DEBUG" != "" ]]; then
+    log "Debug mode ON"
+    ls -la ~/.ssh
+    cat ~/.ssh/id_rsa
+    cat ~/.ssh/known_hosts
 fi
 
 log "Executing command: $@"
