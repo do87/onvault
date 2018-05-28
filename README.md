@@ -21,7 +21,6 @@ The `ONVAULT` script automatically loads to private key from the variables and r
 ### Variables
 
 * `SSH_PRIVATE_KEY`
-* `SSH_KNOWN_HOSTS`
 
 
 ## Usage
