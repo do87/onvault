@@ -28,10 +28,17 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 600 ~/.ssh/* || true
 
+ONVAULT_START_AGENT=${ONVAULT_START_AGENT:-"true"}
+
+if [[ "$ONVAULT_START_AGENT" != "" ]]; then
+    log "Starting SSH agent"
+    eval `ssh-agent -s`
+    ssh-add ~/.ssh/id_rsa
+fi
+
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
-    set +x
-    ls -la ~/.ssh/
-    cat ~/.ssh/id_rsa
+    log "Debug mode ON"
+    ls -la ~/.ssh
     ssh-add -L
 fi
 
