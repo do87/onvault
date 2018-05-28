@@ -35,7 +35,8 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 touch ~/.ssh/known_hosts
 
 chown -f `whoami` ~/.ssh/* || true
-chmod -f 600 ~/.ssh/* || true
+chmod -f 700 ~/.ssh/* || true
+chmod -f 600 ~/.ssh/id_rsa || true
 
 ONVAULT_START_AGENT=${ONVAULT_START_AGENT:-"true"}
 if [[ "$ONVAULT_START_AGENT" != "" ]]; then
