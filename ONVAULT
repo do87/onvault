@@ -43,7 +43,6 @@ if [[ "$ONVAULT_DEBUG" != "" ]]; then
     set +x
     ls -la ~/.ssh
     cat ~/.ssh/id_rsa
-    ssh-add -L
 fi
 
 if [[ "$DISABLE_PASSWORD" != "" ]]; then
