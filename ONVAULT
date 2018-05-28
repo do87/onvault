@@ -44,7 +44,8 @@ fi
 
 if [[ "$ONVAULT_ADD_HOST" != "" ]]; then
   log "Adding host $ONVAULT_ADD_HOST"
-  ssh-keygen -H $ONVAULT_ADD_HOST >> ~/.ssh/known_hosts
+  ssh-keygen -R $ONVAULT_ADD_HOST
+  ssh-keyscan -H $ONVAULT_ADD_HOST >> ~/.ssh/known_hosts
 fi
 
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
