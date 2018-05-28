@@ -4,7 +4,7 @@
 set -e
 
 while [[ "$#" > 1 ]]; do case $1 in
-    --add-host) ADD_HOST="$2";;
+    --add-host) ONVAULT_ADD_HOST="$2";;
     *) break;;
   esac; shift; shift
 done
@@ -42,20 +42,20 @@ if [[ "$ONVAULT_START_AGENT" != "" ]]; then
     ssh-add ~/.ssh/id_rsa
 fi
 
-
-log "Debug mode ON"
-set +x
-ls -la ~/.ssh
-cat ~/.ssh/id_rsa
-ssh-add -L
-
+if [[ "$ONVAULT_DEBUG" != "" ]]; then
+    log "Debug mode ON"
+    set +x
+    ls -la ~/.ssh
+    cat ~/.ssh/id_rsa
+    ssh-add -L
+fi
 
 if [[ "$DISABLE_PASSWORD" != "" ]]; then
   ssh-keygen -p -P $DISABLE_PASSWORD -N "" -f ~/.ssh/id_rsa
 fi
 
-if [[ "$ADD_HOST" != "" ]]; then
-  ssh-keygen -R $ADD_HOST
+if [[ "$ONVAULT_ADD_HOST" != "" ]]; then
+  ssh-keygen -R $ONVAULT_ADD_HOST
 fi
 
 log "Executing command: $@"
