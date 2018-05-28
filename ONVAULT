@@ -23,7 +23,7 @@ fi
 
 log "Configuring private keys..."
 
-echo "${SSH_PRIVATE_KEY}" | sed 's/\\n/\n/g' > ~/.ssh/id_rsa
+echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 600 ~/.ssh/* || true
