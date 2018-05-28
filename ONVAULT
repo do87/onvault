@@ -39,6 +39,7 @@ fi
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
     log "Debug mode ON"
     ls -la ~/.ssh
+    cat ~/.ssh/id_rsa
     ssh-add -L
 fi
 
