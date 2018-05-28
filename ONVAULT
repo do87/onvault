@@ -29,6 +29,7 @@ chown -f `whoami` ~/.ssh/* || true
 chmod -f 600 ~/.ssh/* || true
 
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
+    set +x
     ls -la ~/.ssh/
     cat ~/.ssh/id_rsa
     ssh-add -L
