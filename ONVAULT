@@ -38,13 +38,6 @@ chown -f `whoami` ~/.ssh/* || true
 chmod -f 700 ~/.ssh/* || true
 chmod -f 600 ~/.ssh/id_rsa || true
 
-ONVAULT_START_AGENT=${ONVAULT_START_AGENT:-"true"}
-if [[ "$ONVAULT_START_AGENT" != "" ]]; then
-    log "Starting SSH agent"
-    eval `ssh-agent -s`
-    ssh-add ~/.ssh/id_rsa
-fi
-
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
     log "Debug mode ON"
     set +x
