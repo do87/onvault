@@ -34,7 +34,11 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 
 touch ~/.ssh/known_hosts
 
-echo "Host *\n\tUpdateHostKeys yes" > ~/.ssh/config;
+ONVAULT_UPDATE_HOST_KEYS="true"
+if [[ "$ONVAULT_UPDATE_HOST_KEYS" != "" ]]; then
+    echo "Host *
+    UpdateHostKeys yes" > ~/.ssh/config;
+fi
 
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 700 ~/.ssh/* || true
@@ -50,7 +54,6 @@ if [[ "$ONVAULT_ADD_HOST" != "" ]]; then
   ssh-keyscan -H $ONVAULT_ADD_HOST >> ~/.ssh/known_hosts
 fi
 
-ONVAULT_DEBUG="debug"
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
     log "Debug mode ON"
     ls -la ~/.ssh
