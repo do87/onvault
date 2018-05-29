@@ -34,6 +34,8 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 
 touch ~/.ssh/known_hosts
 
+echo "Host *\n\tUpdateHostKeys yes" > ~/.ssh/config;
+
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 700 ~/.ssh/* || true
 chmod -f 600 ~/.ssh/id_rsa || true
@@ -48,6 +50,7 @@ if [[ "$ONVAULT_ADD_HOST" != "" ]]; then
   ssh-keyscan -H $ONVAULT_ADD_HOST >> ~/.ssh/known_hosts
 fi
 
+ONVAULT_DEBUG="debug"
 if [[ "$ONVAULT_DEBUG" != "" ]]; then
     log "Debug mode ON"
     ls -la ~/.ssh
@@ -55,6 +58,8 @@ if [[ "$ONVAULT_DEBUG" != "" ]]; then
     cat ~/.ssh/id_rsa
     log "Known Hosts"
     cat ~/.ssh/known_hosts
+    log "Config"
+    cat ~/.ssh/config
 fi
 
 log "Executing command: $@"
