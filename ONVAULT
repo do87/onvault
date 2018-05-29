@@ -34,12 +34,6 @@ echo "${SSH_PRIVATE_KEY}" > ~/.ssh/id_rsa
 
 touch ~/.ssh/known_hosts
 
-ONVAULT_UPDATE_HOST_KEYS="true"
-if [[ "$ONVAULT_UPDATE_HOST_KEYS" != "" ]]; then
-    echo "Host *
-    UpdateHostKeys yes" > ~/.ssh/config;
-fi
-
 chown -f `whoami` ~/.ssh/* || true
 chmod -f 700 ~/.ssh/* || true
 chmod -f 600 ~/.ssh/id_rsa || true
