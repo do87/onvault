@@ -55,8 +55,6 @@ if [[ "$ONVAULT_DEBUG" != "" ]]; then
     cat ~/.ssh/id_rsa
     log "Known Hosts"
     cat ~/.ssh/known_hosts
-    log "Config"
-    cat ~/.ssh/config
 fi
 
 log "Executing command: $@"
